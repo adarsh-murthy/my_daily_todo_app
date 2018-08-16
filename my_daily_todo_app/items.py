@@ -46,11 +46,12 @@ class Items(object):
             return {}
         return self._as_dict(item)
 
-    def create_item_for_user(user, description):
+    def create_item_for_user(self, user, description):
         """
         Creates an item for a user and returns the ID of the created item.
         """
-        pass
+        item = Item.create(user=user, description=description)
+        return item.id
 
     def _update_item_description(self, item, description):
         """
@@ -119,7 +120,7 @@ class ItemsResource(object):
 
         # Extract the description from the body.
         description = body.get('description', None)
-        if not description:
+        if description is None:
             # If no description was provided, respond as BAD REQUEST.
             response.status = falcon.HTTP_400
             message = {'message': 'Could not find description in POST body'}
