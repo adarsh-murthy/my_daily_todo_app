@@ -39,12 +39,18 @@ The server will support the following authentication methods:
 
 #### Basic Authentication
 
-### Routes
+### Endpoints
 
-#### Get all items for a user
+#### Items
 
-method: GET
-route: **/items**
+Get or create items for a given user.
+
+
+##### URL: `/items`
+
+##### method: `GET`
+
+##### Authentication required: `YES`
 
 | Data | Type | Description |
 | ---- |:----:|------------:|
@@ -53,8 +59,11 @@ route: **/items**
 | is_complete | boolean | Indicate if the item is complete |
 | create_date | integer | Epoch time idicating creation date of the item |
 
-The data will be served in JSON format as:
+##### Success Response
 
+##### Code `200`
+
+##### Body:
 ```
 [
     {
@@ -66,10 +75,17 @@ The data will be served in JSON format as:
 ]
 ```
 
-#### Create a new item for a user
+##### Code `401`
 
-method: POST
-route: **/items**
+##### Body:
+```
+{
+    'message': 'Not Authorized',
+}
+```
+
+
+##### method: POST
 
 | Data | Type | Description |
 | ---- |:-----|------------:|
