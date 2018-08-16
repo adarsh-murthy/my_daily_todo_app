@@ -133,3 +133,42 @@ class ItemsResource(object):
         message = {'id': item_id}
         response.status = falcon.HTTP_201
         response.body = json.dumps(message)
+
+    def on_put(self, request, response):
+        """PUT method on items.
+        Updates an existing item with given values.
+        """
+        # Grab the user from the request.
+        user = request.context['user']
+
+        # Read the request stream as JSON.
+        body = json.load(request.stream)
+
+        # Extract the ID of the item from the request body.
+        pk = body.get('id', None)
+
+        # If no ID is provided, return BAD REQUEST with appropriate error.
+        if pk is None:
+            response.status = falcon.HTTP_400
+            message = {'message': 'Could not find id for the item'}
+            response.body = json.dumps(message)
+
+        # Try to update the item with requested values.
+        try:
+            self.items.update_item_for_user(user, pk, body)
+            response.status = falcon.HTTP_200
+            message = {'id': pk}
+            response.body = json.dumps(message)
+        except ObjectDoesNotExist as exc:
+            response.status = falcon.HTTP_404
+            message = {'message': str(exc)}
+            response.body = json.dumps(message)
+        except NotAuthorizedException as exc:
+            response.status = falcon.HTTP_403
+            message = {'message': str(exc)}
+            response.body = json.dumps(message)
+        except Exception as exc:
+            response.status = falcon.HTTP_500
+            message = {'message': 'Oops! Something went wrong. We will look'
+                                  ' into it and get back to you.'}
+            response.body = json.dumps(message)
