@@ -4,6 +4,7 @@ import falcon
 import json
 
 
+from .exceptions import NotAuthorizedException, ObjectDoesNotExist
 from .models import Item, User
 
 
@@ -50,6 +51,42 @@ class Items(object):
         Creates an item for a user and returns the ID of the created item.
         """
         pass
+
+    def _update_item_description(self, item, description):
+        """
+        Helper method to update description of an item. This first checks
+        if the description is not None before updating.
+        """
+        if description is None:
+            return
+        item.description = description
+        item.save()
+
+    def _update_item_is_complete(self, item, is_complete):
+        """
+        Helper method to update is_complete of an item. This first checks
+        if the description is not None before updating.
+        """
+        if is_complete is None:
+            return
+        item.is_complete = is_complete
+        item.save()
+
+    def update_item_for_user(self, user, pk, **kwargs):
+        """
+        Update the item for the given user with the new values passed as
+        key-word arguments.
+        """
+        try:
+            item = Item.get_by_id(pk)
+        except Exception:
+            raise ObjectDoesNotExist('Could not find item for given id')
+        if item.user.username != user.username:
+            raise NotAuthorizedException('User does not own item')
+        description = kwargs.get('description', None)
+        self._update_item_description(item, description)
+        is_complete = kwargs.get('is_complete', None)
+        self._update_item_is_complete(item, is_complete)
 
 
 class ItemsResource(object):
