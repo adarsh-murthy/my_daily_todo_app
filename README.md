@@ -44,7 +44,7 @@ The server will support the following authentication methods:
 #### Get all items for a user
 
 method: GET
-route: */items*
+route: **/items**
 
 | Data | Type | Description |
 | ---- |:----:|------------:|
@@ -69,7 +69,7 @@ The data will be served in JSON format as:
 #### Create a new item for a user
 
 method: POST
-route: */items*
+route: **/items**
 
 | Data | Type | Description |
 | ---- |:-----|------------:|
