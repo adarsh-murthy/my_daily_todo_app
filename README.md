@@ -221,15 +221,6 @@ The PUT data will be expected in the body as:
 }
 ```
 
-###### Code `400`
-
-###### Body:
-```
-{
-    "message": <error_message>,
-}
-```
-
 ###### Code `404`
 
 ###### Body:
