@@ -4,8 +4,10 @@ from peewee import *
 
 import datetime
 
+from .settings import db_path
 
-db = SqliteDatabase('my_database.db')
+
+db = SqliteDatabase(db_path)
 
 class BaseModel(Model):
 
