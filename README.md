@@ -48,7 +48,7 @@ Get or create items for a given user.
 
 ##### URL: `/items`
 
-##### method: `GET`
+##### method `GET`
 
 ##### Authentication required: `YES`
 
@@ -67,20 +67,22 @@ Get or create items for a given user.
 ```
 [
     {
-        'id': <value>,
-        'description': <value>,
-        'is_complete': <value>,
-        'create_date': <value>,
+        "id": <value>,
+        "description": <value>,
+        "is_complete": <value>,
+        "create_date": <value>,
     },...
 ]
 ```
+
+##### Error Response
 
 ###### Code `401`
 
 ###### Body:
 ```
 {
-    'message': 'Not Authorized',
+    "message": "Not Authorized",
 }
 ```
 
@@ -89,11 +91,13 @@ Get or create items for a given user.
 ###### Body:
 ```
 {
-    'error': <error_message>,
+    "message": <error_message>,
 }
 ```
 
-##### method: POST
+##### method POST
+
+##### Authentication required: `YES`
 
 | Data | Type | Description |
 | ---- |:-----|------------:|
@@ -103,7 +107,38 @@ The POST data will be expected in the body as:
 
 ```
 {
-    'description': <value>,
+    "description": <value>,
+}
+```
+
+##### Success Response
+
+###### Code: `201`
+
+###### Body:
+```
+{
+    "id": "1",
+}
+```
+
+##### Error Response
+
+###### Code `401`
+
+###### Body
+```
+{
+    "message": "Not Authorized",
+}
+```
+
+###### Code `400`
+
+###### Body
+```
+{
+    "message": <error_message>,
 }
 ```
 
