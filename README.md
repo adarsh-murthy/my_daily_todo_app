@@ -61,9 +61,9 @@ Get or create items for a given user.
 
 ##### Success Response
 
-##### Code `200`
+###### Code `200`
 
-##### Body:
+###### Body:
 ```
 [
     {
@@ -75,15 +75,23 @@ Get or create items for a given user.
 ]
 ```
 
-##### Code `401`
+###### Code `401`
 
-##### Body:
+###### Body:
 ```
 {
     'message': 'Not Authorized',
 }
 ```
 
+###### Code `400`
+
+###### Body:
+```
+{
+    'error': <error_message>,
+}
+```
 
 ##### method: POST
 
