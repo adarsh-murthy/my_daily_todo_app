@@ -1,4 +1,4 @@
-# Daily TODO APP
+# Daily Todo App
 
 A simple no-frill to-do application that helps you plan your day and lets you
 see how you do at the end of the day.
@@ -24,16 +24,16 @@ time. The first version will contain:
 ### Item
 
 - user_id
-    Foreign key to the user object.
+    - Foreign key to the user object.
 
 - description
-    Describe the item.
+    - Describe the item.
 
 - is_complete
-    boolean to represent if the item is complete or not.
+    - boolean to represent if the item is complete or not.
 
 - create_date
-    Date the item was created.
+    - Date the item was created.
 
 ## API design
 
@@ -48,7 +48,7 @@ The server will support the following authentication methods:
 #### Get all items for a user
 
 method: GET
-route: /items
+route: */items*
 
 | Data | Type | Description |
 | ---- |:----:|------------:|
@@ -59,7 +59,7 @@ route: /items
 
 The data will be served in JSON format as:
 
-`
+```
 [
     {
         'id': <value>,
@@ -68,12 +68,12 @@ The data will be served in JSON format as:
         'create_date': <value>,
     },...
 ]
-`
+```
 
 #### Create a new item for a user
 
 method: POST
-route: /items
+route: */items*
 
 | Data | Type | Description |
 | ---- |:-----|------------:|
@@ -81,11 +81,11 @@ route: /items
 
 The POST data will be expected in the body as:
 
-`
+```
 {
     'description': <value>,
 }
-`
+```
 
 ### Throttle limit
 
