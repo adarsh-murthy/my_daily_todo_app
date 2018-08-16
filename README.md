@@ -23,17 +23,13 @@ time. The first version will contain:
 
 ### Item
 
-- user_id
-    - Foreign key to the user object.
-
-- description
-    - Describe the item.
-
-- is_complete
-    - boolean to represent if the item is complete or not.
-
-- create_date
-    - Date the item was created.
+| Attribute | Type | Description |
+| --------- |:----:|------------:|
+| id | Integer | Primary key of the object |
+| user_id | Integer | Foreign key to the user model |
+| create_date | Integer | Create date in epoch format |
+| description | text | Description of the to-do item |
+| is_complete | boolean | Indicates if the item is complete or not |
 
 ## API design
 
