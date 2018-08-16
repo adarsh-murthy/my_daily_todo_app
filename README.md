@@ -101,7 +101,7 @@ Get or create items for a given user.
 
 | Data | Type | Description |
 | ---- |:-----|------------:|
-| description | Text | Describes an item |
+| description | text | Describes an item |
 
 The POST data will be expected in the body as:
 
@@ -142,6 +142,57 @@ The POST data will be expected in the body as:
 }
 ```
 
+##### method `PUT`
+
+##### Authentication required: `YES`
+
+| Data | Type | Description |
+| ---- |:-----|------------:|
+| id | integer | ID of the item to be updated |
+| description | text | Describes an item |
+| is_complete | boolean | Indicate if the item is complete |
+
+Here, the description and is_complete are both optional.
+The PUT data will be expected in the body as:
+
+```
+{
+    "id": <value>,
+    "description": <value>,
+    "is_complete": "True",
+}
+```
+
+##### Success Response
+
+###### Code: `200`
+
+###### Body:
+```
+{
+    "id": "1",
+}
+```
+
+##### Error Response
+
+###### Code `401`
+
+###### Body
+```
+{
+    "message": "Not Authorized",
+}
+```
+
+###### Code `400`
+
+###### Body
+```
+{
+    "message": <error_message>,
+}
+```
 ### Throttle limit
 
 The API throttle limit is 200,000 requests a minute.
