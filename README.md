@@ -95,6 +95,24 @@ Get or create items for a given user.
 }
 ```
 
+###### Code `404`
+
+###### Body:
+```
+{
+    "message": "Could not find item for given id"
+}
+```
+
+###### Code `500`
+
+###### Body:
+```
+{
+    "message": "Oops! Something went wrong. We will look into it and get back to you"
+}
+```
+
 ##### method `POST`
 
 ##### Authentication required: `YES`
@@ -139,6 +157,15 @@ The POST data will be expected in the body as:
 ```
 {
     "message": <error_message>,
+}
+```
+
+###### Code `500`
+
+###### Body:
+```
+{
+    "message": "Oops! Something went wrong. We will look into it and get back to you"
 }
 ```
 
@@ -193,6 +220,34 @@ The PUT data will be expected in the body as:
     "message": <error_message>,
 }
 ```
+
+###### Code `400`
+
+###### Body:
+```
+{
+    "message": <error_message>,
+}
+```
+
+###### Code `404`
+
+###### Body:
+```
+{
+    "message": "Could not find item for given id"
+}
+```
+
+###### Code `500`
+
+###### Body:
+```
+{
+    "message": "Oops! Something went wrong. We will look into it and get back to you"
+}
+```
+
 ### Throttle limit
 
 The API throttle limit is 200,000 requests a minute.
