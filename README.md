@@ -95,7 +95,7 @@ Get or create items for a given user.
 }
 ```
 
-##### method POST
+##### method `POST`
 
 ##### Authentication required: `YES`
 
